@@ -1,0 +1,11 @@
+{
+  "name": "@skycoin4444/fedramp-security-hardening",
+  "version": "1.0.0",
+  "description": "FedRAMP security hardening and cloud compliance",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "harden": "echo 'applying security hardening'",
+    "validate": "echo 'validating compliance'"
+  }
+}
