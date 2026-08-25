@@ -1,44 +1,36 @@
-<!-- PORTFOLIO PROJECT PROFILE: maintained by the repository owner -->
+# Control Evidence Lab
 
-## Project profile and code-audit snapshot
+**Status: engineering beta / compliance-evidence engineering lab.** This TypeScript library inventories caller-declared control evidence and reports whether required evidence identifiers are present, missing, or not assessed.
 
-**What this is:** **fedramp-security-hardening** is a public repository described as: “Core component of SKYCOIN4444 ecosystem. #SkyCoin4444 #AI #Blockchain #DevOps #Innovation” Its dominant language signals are **TypeScript (1 files)**.
+It deliberately does **not** determine FedRAMP compliance, perform assessor judgment, issue an authorization, validate the authenticity or sufficiency of evidence, or claim that a system meets any government security baseline.
 
-**Why it has value:** Its value is best understood through the implementation evidence currently present in the repository: **6 tracked files** were observed in the shallow audit, with the source structure and existing documentation providing the project’s specific context. This README does not treat a prototype, experiment, or archive as a production system without supporting evidence.
+## Implemented
 
-**Implementation evidence:** No test-related file was detected by filename heuristics.; 1 dependency or package manifest(s) detected; No CI, build, Docker, or infrastructure signal was detected by the audit.; and 2 documentation or governance file(s) detected. Test filenames observed include none detected. Dependency or package files include `package.json`. Build, CI, or infrastructure signals include none detected.
+- bounded control IDs, descriptions, and evidence identifiers;
+- deterministic evidence deduplication and ordering;
+- explicit `present`, `missing`, and `not-assessed` statuses;
+- missing-evidence reporting;
+- aggregate evidence counts;
+- permanent `certificationPerformed: false` truth signal;
+- strict TypeScript, regression tests, production build, package-import smoke test, and dependency-audit CI.
 
-**Current status:** The repository is tracked on the `main` branch. The existing source tree, configuration, tests, workflows, and documentation remain authoritative for supported behavior and maturity. A code audit is not a production-readiness certification, and the presence of a test or workflow file does not establish that all checks pass.
+## Development
 
-**Relationship to the wider portfolio:** This repository is one focused component of the broader Skyler Blue Spillers portfolio across AI, software engineering, cloud and DevOps, cybersecurity, blockchain, finance, education, social systems, and creative work. It may provide a service boundary, implementation pattern, experiment, archive, or reusable idea for related repositories. Treat repositories as technical dependencies only where documented interfaces and verified project requirements support that relationship.
+```bash
+npm install
+npm run typecheck
+npm test
+npm run build
+```
 
-**Quality and security note:** No obvious secret-like pattern was detected by the limited static scan; this is not a substitute for a security audit. No TODO/FIXME marker was detected in the scanned text files.
+## Integration boundary
 
----
+Use this package only as an internal evidence-inventory primitive. A real FedRAMP or other compliance program requires the applicable control baseline, system boundary, SSP and supporting documentation, evidence collection/provenance, implementation review, testing, assessor judgment, POA&M handling, authorization process, continuous monitoring, and program-specific requirements maintained outside this library.
 
-# Fedramp Security Hardening
+A `present` result means only that all evidence identifiers the caller declared as required were also supplied to the function. It is not a finding that the evidence is correct, current, sufficient, authentic, or compliant.
 
-![GitHub stars](https://img.shields.io/github/stars/skylerblue333/fedramp-security-hardening?style=flat-square)
-![GitHub license](https://img.shields.io/github/license/skylerblue333/fedramp-security-hardening?style=flat-square)
+## Explicit limitations
 
-## 🌟 Overview
-**fedramp-security-hardening** is a professional-grade project within the **SkyCoin4444** ecosystem. It focuses on delivering high-value solutions in the domain of **TypeScript**.
+This repository ships no official FedRAMP/NIST control catalog, policy requirements, scanning engine, cloud hardening automation, assessor workflow, ATO workflow, continuous monitoring service, or production deployment. It never applies security patches or mutates infrastructure.
 
-## 🚀 Key Features
-- **Scalable Architecture**: Designed for enterprise-level growth and performance.
-- **Modern Standards**: Implements best practices for clean code and maintainability.
-- **Robust Integration**: Built to work seamlessly within modern cloud-native environments.
-
-## 🛠️ Technology Stack
-- **Primary Domain**: TypeScript
-- **Ecosystem**: SkyCoin4444 Digital Platform
-
-## 📂 Structure
-The project is organized into a modular structure to ensure clarity and ease of development.
-
-## 👨‍💻 Author
-**Skyler Blue Spillers**
-*Professional Chess Player & Software Engineer*
-
----
-*Powered by SkyCoin4444*
+See `SECURITY.md` for responsible-use boundaries and `LICENSE` for licensing terms.
